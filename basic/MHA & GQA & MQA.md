@@ -17,3 +17,5 @@ MQA
 
 GQA
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/8066df05-3354-4fa8-a204-20326c2c2f39)
+
+## todo :code
