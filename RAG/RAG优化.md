@@ -1,8 +1,9 @@
-Basics
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/78ae6875-9c1d-464b-980d-186d61e40e5c)Basics
 
 - Indexing
 - Retrieval
 - Generation
+
 
 Advanced
 
@@ -135,7 +136,8 @@ In LangChain  [Ensemble Retriever](https://python.langchain.com/docs/modules/da
 
 **对于复杂的查询，大语言模型能够将其拆分为多个子查询。**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/d097737c-61d5-444b-a706-a23f74e00ca8/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/0d0c06d0-5b47-4941-8192-05b7e1bcb4b7)
+
 
  [Multi Query Retriever](https://python.langchain.com/docs/modules/data_connection/retrievers/MultiQueryRetriever?ref=blog.langchain.dev) in Langchain and as a [Sub Question Query Engine](https://docs.llamaindex.ai/en/stable/examples/query_engine/sub_question_query_engine.html) in Llamaindex.
 
@@ -183,7 +185,8 @@ support `follow up questions`,  `anaphora`, `arbitrary user commands` relating t
 
  [ReAct Agent](https://docs.llamaindex.ai/en/stable/examples/chat_engine/chat_engine_react.html)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/1b37aeb3-ddf5-4f18-be8a-677f410ee630/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/b74e5b75-b72e-49ec-a022-85d9c26ae544)
+
 
 # **6. Query Routing**
 
@@ -195,7 +198,7 @@ Query routers are also used to select an index, or, broader, data store, where t
 
 # **7. Agents in RAG**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/79fcedc2-1ee8-4ebd-9207-abed2aa38f22/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/fc9addca-18a4-4b5f-a139-d9ad594490ae)
 
 # **8. Response synthesiser**
 
