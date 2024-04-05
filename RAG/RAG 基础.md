@@ -23,12 +23,15 @@
   * 大模型问答（LLM）
   * 响应合成
 ## 5. RAG vs. SFT
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/ff8a21b0-7a43-4c8a-a92c-d0dbf222cac7)
 思考：当大模型长文本问题解决，RAG是不是没用了？
   * 模型训练成本问题
   * 外部数据：隐私和安全
   * so on
 
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/ff8a21b0-7a43-4c8a-a92c-d0dbf222cac7)
+
+
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/2d7a3b11-c409-4bf4-ac31-23242df2e421)
 
 ## Reference
 1. https://docs.google.com/presentation/d/1C9IaAwHoWcc4RSTqo-pCoN3h0nCgqV2JEYZUJunv_9Q/edit#slide=id.g2b6714d62f7_0_0
