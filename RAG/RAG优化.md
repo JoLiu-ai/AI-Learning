@@ -43,11 +43,13 @@ keywords：`搜索索引`，`元数据`，**分层索引**
 3.  **store metadata along with vectors** and then use **metadata filters** 
 4. list index, tree index, and keyword table index
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/a764c718-4de5-4014-ad4f-0e25f469d955/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/c98d0e1d-eb32-4bca-9d0b-eca5b6613636)
+
 
 ## **2. 分层索引  2 Hierarchical indices**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/1fe72d30-d175-425f-be38-65b394577f3c/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/c98d0e1d-eb32-4bca-9d0b-eca5b6613636)
+
 
 **create two indices /'ɪndɪsiz/**
 
@@ -71,8 +73,8 @@ keywords：`搜索索引`，`元数据`，**分层索引**
     
     这种方法中，你会让大语言模型针对一个查询生成一个假设性的回应，然后结合这个回应的向量和查询的向量，共同用于提升搜索的效果。
     
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d98b5c87-dcca-4860-8f0f-42839e7c6079)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/09cb8053-9ffd-43ca-a00e-a3bd86a06283/Untitled.png)
 
 ## **4. 语境增强 Context enrichment**
 
@@ -93,13 +95,14 @@ to expand context by sentences around the smaller retrieved chunk
 - `文档的每个句子都被单独编码`，这样可以极大提高查询与语境之间的余弦距离搜索的准确性。
 - 我们在检索到的`最相关单句之前后各扩展*k*个句子`，然后把这个扩展后的语境送给 LLM 进行推理。
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/cf5e7b47-da36-4398-ae0c-43026989165a/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d5964ce7-9898-4821-a421-f295426c8c67)
+
 
  **自动合并检索法** **（也称为** **父文档检索法) Auto-merging Retriever (aka Parent Document Retriever)**
 
 文档被分割成层次化的块结构，最小的叶子块被送至索引。在检索时，我们会找出 k 个叶子块，如果存在 n 个块都指向同一父块，我们就用这个父块替换它们，并把它送给 LLM 用于生成答案。
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/96f458d6-3528-4f3d-be85-11b7c35cf8e3/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/2cce0c86-6830-4990-bcd5-ec8a079108f3)
 
  ****
 
@@ -113,7 +116,8 @@ to expand context by sentences around the smaller retrieved chunk
 
 In LangChain  [Ensemble Retriever](https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble) class,  RRF for reranking
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/9a61bc5e-8474-42fb-a4de-fd1213310b56/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/59481a94-b799-4a08-87db-89e274a5356f)
+
 
 # **重新排名与过滤 Reranking & filtering**
 
