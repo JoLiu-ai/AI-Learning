@@ -3,7 +3,7 @@
 
 <div>
   <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/6ec3dd8e-c74d-4069-a483-407717fb7d8c" alt="Image 1" style="width: 45%; margin-right: 5px;" />
-  <img src="[https://github.com/hinswhale/AI-Learning/assets/22999866/6ec3dd8e-c74d-4069-a483-407717fb7d8c](https://github.com/hinswhale/AI-Learning/assets/22999866/337143bd-037e-47dc-8d6e-e47aff8a4c1c)" alt="Image 2" style="width: 45%;" />
+  <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/337143bd-037e-47dc-8d6e-e47aff8a4c1c)" alt="Image 2" style="width: 45%;" />
 </div>
 
 ## 2. 为什么用RAG
