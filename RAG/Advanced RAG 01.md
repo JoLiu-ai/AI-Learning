@@ -8,7 +8,7 @@
 * BGE embeddings
 * OpenAI
 
-  ```python
+```python
 from langchain.embeddings import HuggingFaceBgeEmbeddings
 
 model_name = "BAAI/bge-small-en-v1.5"
@@ -23,8 +23,7 @@ vectorstore = Chroma(
     collection_name="full_documents",
     embedding_function=bge_embeddings  #OpenAIEmbeddings()
 )
-
-  ```
+```
 
 ```python
 from langchain.schema import Document
