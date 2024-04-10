@@ -1,6 +1,5 @@
 # self querying retrieval
 # Parent Document Retriever
-``
 
 # tools
 ## vector stores
@@ -27,7 +26,7 @@ vectorstore = Chroma(
 
   ```
 
-```
+```python
 from langchain.schema import Document
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
