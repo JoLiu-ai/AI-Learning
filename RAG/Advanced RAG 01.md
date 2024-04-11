@@ -27,11 +27,12 @@ big_chunks_retriever = ParentDocumentRetriever(
 big_chunks_retriever.add_documents(docs)
 ```
 # Hybrid Search
-##  a key-word search
+##  1. key-word search
 ### BM25 
+### todo
 
 elastic search
-## semantic lookup
+## 2. semantic lookup
 ### Dense retrievers FAISS 
 `Facebook AI`团队开源的针对聚类和相似性搜索库，为稠密向量提供高效相似度搜索和聚类，支持十亿级别向量的搜索
 ```python
@@ -39,7 +40,7 @@ from langchain.vectorstores import FAISS
 faiss_vectorstore = FAISS.from_texts(doc_list, embeddings)
 faiss_retriever = faiss_vectorstore.as_retriever(search_kwargs={"k": 2})
 ```
-
+### todo
 ## Ensembles
 ```python
 ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, faiss_retriever],
