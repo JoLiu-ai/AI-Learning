@@ -1,5 +1,27 @@
 # self querying retrieval
 # Parent Document Retriever
+```python
+from langchain.retrievers import ParentDocumentRetriever
+# This text splitter is used to create the parent documents - The big chunks
+parent_splitter = RecursiveCharacterTextSplitter(chunk_size=2000)
+
+# This text splitter is used to create the child documents - The small chunks
+# It should create documents smaller than the parent
+child_splitter = RecursiveCharacterTextSplitter(chunk_size=400)
+
+# The vectorstore to use to index the child chunks
+vectorstore = Chroma(collection_name="split_parents", embedding_function=bge_embeddings) #OpenAIEmbeddings()
+
+# The storage layer for the parent documents
+store = InMemoryStore()
+big_chunks_retriever = ParentDocumentRetriever(
+    vectorstore=vectorstore,
+    docstore=store,
+    child_splitter=child_splitter,
+    parent_splitter=parent_splitter,
+)
+big_chunks_retriever.add_documents(docs)
+```
 
 # tools
 ## vector stores
