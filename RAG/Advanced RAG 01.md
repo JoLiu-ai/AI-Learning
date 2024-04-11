@@ -32,8 +32,8 @@ big_chunks_retriever.add_documents(docs)
 ### todo
 
 elastic search
-## 3.2. semantic lookup
-### Dense retrievers FAISS 
+## 3.2. Dense retrievers -- semantic lookup
+### FAISS 
 `Facebook AI`团队开源的针对聚类和相似性搜索库，为稠密向量提供高效相似度搜索和聚类，支持十亿级别向量的搜索
 ```python
 from langchain.vectorstores import FAISS
