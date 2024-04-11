@@ -1,9 +1,9 @@
-# self querying retrieval
-## metadata
 
 
-# 摘要向量化，但将完整文档返给LLM
-# Parent Document Retriever
+# self querying retrieval - metadata
+# 转化成更小单元
+## 摘要向量化，但将完整文档返给LLM
+## Parent Document Retriever
 ```python
 from langchain.retrievers import ParentDocumentRetriever
 # This text splitter is used to create the parent documents - The big chunks
