@@ -1,4 +1,8 @@
 # self querying retrieval
+## metadata
+
+
+# 摘要向量化，但将完整文档返给LLM
 # Parent Document Retriever
 ```python
 from langchain.retrievers import ParentDocumentRetriever
@@ -22,7 +26,25 @@ big_chunks_retriever = ParentDocumentRetriever(
 )
 big_chunks_retriever.add_documents(docs)
 ```
+# Hybrid Search
+##  a key-word search
+### BM25 
 
+elastic search
+## semantic lookup
+### Dense retrievers FAISS 
+`Facebook AI`团队开源的针对聚类和相似性搜索库，为稠密向量提供高效相似度搜索和聚类，支持十亿级别向量的搜索
+```python
+from langchain.vectorstores import FAISS
+faiss_vectorstore = FAISS.from_texts(doc_list, embeddings)
+faiss_retriever = faiss_vectorstore.as_retriever(search_kwargs={"k": 2})
+```
+
+## Ensembles
+```python
+ensemble_retriever = EnsembleRetriever(retrievers=[bm25_retriever, faiss_retriever],
+                                       weights=[0.5, 0.5])
+```
 # tools
 ## vector stores
 * chroma 
