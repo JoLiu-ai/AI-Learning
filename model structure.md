@@ -2,11 +2,9 @@ Masked Self-attention
 
 # **归一化函数（Normalizing Function）**
 
-## 方法
+## LN
 
-### LN
-
-Layer Normalization 
+### Layer Normalization 
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f)
 
 
@@ -79,7 +77,8 @@ ReLU 可能会产生神经元失效的问题，被置为 0 的神经元将学习
 ### **位置嵌入**
 
 ### 绝对位置编码
-![Uploading image.png…]()
+
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/7d581b0d-eb04-44e5-a0c9-ea7c4022042f)
 
 
 ### 相对位置编码
