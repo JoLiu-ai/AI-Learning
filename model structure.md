@@ -5,7 +5,7 @@ Masked Self-attention
 ## LN
 
 ### Layer Normalization 
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f){:height="50%" width="50%"}
 
 
 ### RMSNorm
