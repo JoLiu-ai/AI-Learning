@@ -7,14 +7,14 @@ Masked Self-attention
 ### LN
 
 Layer Normalization 
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/5b7b25d3-7b74-41be-b1ea-0c7fc2bc95be/Untitled.png)
 
 ### RMSNorm
 
 Root Mean Square Layer Normalization  均方根层归一化
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/a7b8d0e2-c2ec-4f9a-b8a2-8af9efae3a33)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/20b38e1f-e166-4af9-8b38-744987ff248a/Untitled.png)
 
 ```python
 class LlamaRMSNorm(nn.Module):
@@ -39,50 +39,48 @@ class LlamaRMSNorm(nn.Module):
 通过这一简单的操作， Transformer 的层数可以被成功地扩展至 1,000 层，进而有效提升了模型性能与训练稳定性
 
 - GLM-130B
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/7c906cc9-2e61-4696-9cf7-a158e424c73c/Untitled.png)
+- ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/4ca0a201-a1c7-4f34-8515-a291cae7e7a3)
 
 ## 归一化模块位置
 
 ### 层后归一化（Post-Layer Normalization, Post-Norm）
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/765e80fa-d21e-43b0-a5ae-170a2700fd22)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/7d4608aa-4448-4a0e-8d7e-44dd8cc40913/Untitled.png)
 
 ### 层前归一化（Pre-Layer Normalization, Pre-Norm）
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/b6bb1444-c1c7-4f35-a75e-acb77f064d88/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/3defdee6-52d1-4680-97ea-89a9ebc65651)
 
 ### 夹心归一化（Sandwich-Layer Normalization, SandwichNorm）
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/0bdb2087-d50e-4d9b-ac44-5fc417beb0e0)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/cfb0d416-7773-4520-bf28-70647a743ba7/Untitled.png)
 
 ## **激活函数**
 
 ### ReLU
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/6ede9ab8-2cd6-4781-bce1-ddf78ec87375)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/8a6ffff3-8de8-4860-9be0-9fcf2c77c8d6/Untitled.png)
 
 ReLU 可能会产生神经元失效的问题，被置为 0 的神经元将学习不到有用的信息。
 
 ### **SwiGLU**
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d80cf296-9188-45b4-b97d-09f97224a632)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/a775e921-3ba8-44e2-b09c-2e993a1c7545/Untitled.png)
 
 ### GELU
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/a7d8762d-66a4-44bc-9694-cc6ef7847dab)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/d039e34c-f784-42c9-9d9b-216a960340c1/Untitled.png)
 
 ### GLU(Gated Linear Unit）
 
 变种 SwiGLU 和 GeGLU
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/31ce5496-73a9-4522-8279-cb96df949119)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/d4cf5046-bf97-4e99-94df-243f286e4391/Untitled.png)
 
 ### **位置嵌入**
 
 ### 绝对位置编码
+![Uploading image.png…]()
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/a5ba1f75-5499-4e97-9d46-e34b33fd91b7/Untitled.png)
 
 ### 相对位置编码
 
