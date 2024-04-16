@@ -37,48 +37,42 @@ class LlamaRMSNorm(nn.Module):
 通过这一简单的操作， Transformer 的层数可以被成功地扩展至 1,000 层，进而有效提升了模型性能与训练稳定性
 
 - GLM-130B
-- <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/4ca0a201-a1c7-4f34-8515-a291cae7e7a3" alt="image" width="500" />
+<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/4ca0a201-a1c7-4f34-8515-a291cae7e7a3" alt="image" width="500" />
 
 ## 归一化模块位置
 
 ### 层后归一化（Post-Layer Normalization, Post-Norm）
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/765e80fa-d21e-43b0-a5ae-170a2700fd22)
-
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/765e80fa-d21e-43b0-a5ae-170a2700fd22" alt="image" width="500" />
 
 ### 层前归一化（Pre-Layer Normalization, Pre-Norm）
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/3defdee6-52d1-4680-97ea-89a9ebc65651)
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/3defdee6-52d1-4680-97ea-89a9ebc65651" alt="image" width="500" />
 
 ### 夹心归一化（Sandwich-Layer Normalization, SandwichNorm）
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/0bdb2087-d50e-4d9b-ac44-5fc417beb0e0)
-
+<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/0bdb2087-d50e-4d9b-ac44-5fc417beb0e0" alt="image" width="500" />
 
 ## **激活函数**
 
 ### ReLU
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/6ede9ab8-2cd6-4781-bce1-ddf78ec87375)
-
+<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/6ede9ab8-2cd6-4781-bce1-ddf78ec87375" alt="image" width="500" />
 
 ReLU 可能会产生神经元失效的问题，被置为 0 的神经元将学习不到有用的信息。
 
 ### **SwiGLU**
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d80cf296-9188-45b4-b97d-09f97224a632)
-
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/d80cf296-9188-45b4-b97d-09f97224a632" alt="image" width="500" />
 
 ### GELU
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/a7d8762d-66a4-44bc-9694-cc6ef7847dab)
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/a7d8762d-66a4-44bc-9694-cc6ef7847dab" alt="image" width="500" />
 
 
 ### GLU(Gated Linear Unit）
 
 变种 SwiGLU 和 GeGLU
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/31ce5496-73a9-4522-8279-cb96df949119)
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/31ce5496-73a9-4522-8279-cb96df949119" alt="image" width="500" />
 
-
-### **位置嵌入**
+## **位置嵌入**
 
 ### 绝对位置编码
-
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/7d581b0d-eb04-44e5-a0c9-ea7c4022042f)
+ <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/7d581b0d-eb04-44e5-a0c9-ea7c4022042f" alt="image" width="500" />
 
 
 ### 相对位置编码
