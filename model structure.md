@@ -8,7 +8,7 @@ Masked Self-attention
 
 
 
-<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f" alt="image" width="300" />
+<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f" alt="image" width="500" />
 
 ### RMSNorm
 
