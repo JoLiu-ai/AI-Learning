@@ -6,8 +6,6 @@ Masked Self-attention
 
 ### Layer Normalization 
 
-
-
 <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f" alt="image" width="500" />
 
 ### RMSNorm
@@ -15,6 +13,7 @@ Masked Self-attention
 Root Mean Square Layer Normalization  均方根层归一化
 
 <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/a7b8d0e2-c2ec-4f9a-b8a2-8af9efae3a33" alt="image" width="500" />
+
 ```python
 class LlamaRMSNorm(nn.Module):
     def __init__(self, hidden_size, eps=1e-6):
@@ -38,7 +37,7 @@ class LlamaRMSNorm(nn.Module):
 通过这一简单的操作， Transformer 的层数可以被成功地扩展至 1,000 层，进而有效提升了模型性能与训练稳定性
 
 - GLM-130B
-- ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/4ca0a201-a1c7-4f34-8515-a291cae7e7a3)
+- <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/4ca0a201-a1c7-4f34-8515-a291cae7e7a3" alt="image" width="500" />
 
 ## 归一化模块位置
 
