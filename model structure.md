@@ -13,9 +13,8 @@ Masked Self-attention
 ### RMSNorm
 
 Root Mean Square Layer Normalization  均方根层归一化
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/a7b8d0e2-c2ec-4f9a-b8a2-8af9efae3a33)
 
-
+<img src="https://github.com/hinswhale/AI-Learning/assets/22999866/a7b8d0e2-c2ec-4f9a-b8a2-8af9efae3a33" alt="image" width="500" />
 ```python
 class LlamaRMSNorm(nn.Module):
     def __init__(self, hidden_size, eps=1e-6):
