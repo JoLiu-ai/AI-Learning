@@ -1,10 +1,7 @@
-Masked Self-attention
 
 # **归一化函数（Normalizing Function）**
 
-## LN
-
-### Layer Normalization 
+### LN(Layer Normalization )
 
 <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/9c42ce87-20e9-4b48-80d2-04764e6d787f" alt="image" width="500" />
 
@@ -65,8 +62,8 @@ ReLU 可能会产生神经元失效的问题，被置为 0 的神经元将学习
 
 
 ### GLU(Gated Linear Unit）
-
 变种 SwiGLU 和 GeGLU
+
  <img src="https://github.com/hinswhale/AI-Learning/assets/22999866/31ce5496-73a9-4522-8279-cb96df949119" alt="image" width="500" />
 
 ## **位置嵌入**
