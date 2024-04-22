@@ -11,9 +11,10 @@
 * `Over-Simplification of Search`: Our prevalent search paradigm linearly maps queries to answers, lacking the depth to understand the multi-dimensional nature of human queries. This linear model often fails to capture the nuances and contexts of more complex user inquiries, resulting in less relevant results.
 
 #  RAG fusion
-![image](https://github.com/hinswhale/AI-Learning/assets/22999866/1e5a75ad-3ec7-4403-ad21-fbb6e2c3a82b)
 
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/1e5a75ad-3ec7-4403-ad21-fbb6e2c3a82b)  
 重点： Multi-Query Generation + RRF
+
 ### why fusion
  to bridge the gap between what users explicitly ask and what they intend to ask
 * Addressing Gaps: It tackles the constraints inherent in RAG by generating multiple user queries and reranking the results.
@@ -22,6 +23,7 @@
 
 ## Workflow:
 1. Multi-Query Generation: 通过LLM将Query转换为相似但不同的查询
+
 重点：`prompt engineering ` 
 
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d50f586f-39ac-455b-8170-080cd14f4434)
@@ -49,7 +51,8 @@ def generate_queries_chatgpt(original_query):
 
 其中，rank是按照距离排序的文档在各自集合中[query]的排名，k是常数平滑因子，一般取k=60。RRF将不同检索器的结果综合评估得到每个chunk的统一得分。
 
-[Developed in collaboration]([链接](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf)) with the University of Waterloo (CAN) and Google, RRF
+出处： ([Developed in collaboration](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf)) with the University of Waterloo (CAN) and Google
+
    ```python
 # Reciprocal Rank Fusion algorithm
 def reciprocal_rank_fusion(search_results_dict, k=60):
@@ -76,6 +79,12 @@ def reciprocal_rank_fusion(search_results_dict, k=60):
 def generate_output(reranked_results, queries):
     return f"Final output based on {queries} and reranked documents: {list(reranked_results.keys())}"
 ```
+## 缺点
+1. The Risk of Being Overly Verbose
+2. Balancing the Context Window
+
+
+
 
 # 参考资料
 1. https://towardsdatascience.com/forget-rag-the-future-is-rag-fusion-1147298d8ad1
