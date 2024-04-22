@@ -12,9 +12,12 @@
 
 #  RAG fusion
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/1e5a75ad-3ec7-4403-ad21-fbb6e2c3a82b)
+重点： Multi-Query Generation + RRF
 ## Workflow:
+1. Multi-Query Generation: 通过LLM将Query转换为相似但不同的查询
+   重点：`prompt engineering ` 
+   ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d50f586f-39ac-455b-8170-080cd14f4434)
 
-1. 通过LLM将Query转换为相似但不同的查询
 ```python
 # Function to generate queries using OpenAI's ChatGPT
 def generate_queries_chatgpt(original_query):
@@ -33,6 +36,9 @@ def generate_queries_chatgpt(original_query):
 ```
 2. Vector Search via  original + generated  Query
 3.  Use `RRF( reciprocal rank fusion )` to aggregate and refine  the above results
+   ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/630de3d7-da28-4a03-ad44-045c5f8389f0)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/52f559b2-08a3-4fd8-9f0b-490da7dbfa71)
+其中，rank是按照距离排序的文档在各自集合中的排名，k是常数平滑因子，一般取k=60。RRF将不同检索器的结果综合评估得到每个chunk的统一得分。
    ```python
 # Reciprocal Rank Fusion algorithm
 def reciprocal_rank_fusion(search_results_dict, k=60):
