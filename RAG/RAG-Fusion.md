@@ -48,7 +48,8 @@ def generate_queries_chatgpt(original_query):
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/52f559b2-08a3-4fd8-9f0b-490da7dbfa71)
 
 其中，rank是按照距离排序的文档在各自集合中[query]的排名，k是常数平滑因子，一般取k=60。RRF将不同检索器的结果综合评估得到每个chunk的统一得分。
-![url](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf)Developed in collaboration with the University of Waterloo (CAN) and Google, RRF
+
+[Developed in collaboration]([链接](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf)) with the University of Waterloo (CAN) and Google, RRF
    ```python
 # Reciprocal Rank Fusion algorithm
 def reciprocal_rank_fusion(search_results_dict, k=60):
