@@ -12,7 +12,9 @@
 
 #  RAG fusion
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/1e5a75ad-3ec7-4403-ad21-fbb6e2c3a82b)
+
 重点： Multi-Query Generation + RRF
+
 ## Workflow:
 1. Multi-Query Generation: 通过LLM将Query转换为相似但不同的查询
    重点：`prompt engineering ` 
