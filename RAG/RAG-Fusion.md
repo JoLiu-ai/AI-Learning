@@ -17,8 +17,9 @@
 
 ## Workflow:
 1. Multi-Query Generation: 通过LLM将Query转换为相似但不同的查询
-   重点：`prompt engineering ` 
-   ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d50f586f-39ac-455b-8170-080cd14f4434)
+重点：`prompt engineering ` 
+
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/d50f586f-39ac-455b-8170-080cd14f4434)
 
 ```python
 # Function to generate queries using OpenAI's ChatGPT
