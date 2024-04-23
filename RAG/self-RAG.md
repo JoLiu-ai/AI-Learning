@@ -20,7 +20,8 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 - Critique
     - IsREL、IsSUP、IsUSE
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/77e4b42d-6db5-40d4-b9ab-f93f460a1fcf/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/3f6818d9-f1e7-4ae8-b258-28479e5edd95)
+
 
 ## **训练**:
 
@@ -31,7 +32,8 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 
 利用评价模型C来生成M模型所需的监督数据，在推理过程中只依赖M模型，不用C模型。
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/f9dddfe4-d465-475f-ad2a-927ecddbf032/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/995b4f56-ab2c-4179-8c34-3c213f1381d2)
+
 
 ### **critic model**
 
@@ -45,7 +47,9 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 
 训练的目标为：
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/0d0c290f-22c1-4a8c-843e-75cd7d8564cd/Untitled.png)
+
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/fef98db1-e0d5-46ec-b3fc-afcb89cef9cb)
+
 
 ### **generator model**
 
@@ -59,13 +63,14 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 - 如果该段落被认为是相关的，C 会进一步评估这个段落是否支持模型的生成，并给出一个 IsSUP（是否支持）的预测；
 - IsUSE 可能代表着模型对检索到的内容的整体效用或有用性的评估；
 - 最后，与反思tokens一起增强的输出和原始的输入对被添加到 Dgen，作为一个训练数据集。
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/6c12afe5-4182-4186-875e-f3b19de58cd1)
 
 **2/ 生成学习(generator learning)**
 
 - 使用反思tokens的经过修改过的语料库Dgen来训练生成器模型；
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/966854ea-0051-4d38-babf-562d8bf5c481/Untitled.png)
-    
+    ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/2377922c-0d9b-452a-8ade-39f3f92faa5d)
+
 
 **要点：**
 
@@ -78,7 +83,8 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 2. generate segment in parallel：并行处理检索的上下文，评判上下文对prompt的相关性，同时生成相应的结果。
 3. Critique outputs and select best segment ：评判每个上下文对相应结果的支持程度，同时选择一个最好的生成结果
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/f04f57a1-2ed9-4b0a-882f-25d5f48a0b13/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/e70e9fd1-8758-4c12-ab36-653a49b847a6)
+
 
 主要步骤概括如下：
 
@@ -88,9 +94,22 @@ https://github.com/hinswhale/AI-Learning/assets/22999866/a0526c3c-9984-4278-bbb6
 4. 再重复检索
 5. 生成结果会引用相关片段，以及输出结果是否符合该片段，便于查证事实。
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/0d8c4808-48fa-4373-9beb-29e9ac6b5abc/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/4f259929-faee-4130-bd15-cf37b1213cfb)
+
+### tips：
+
+1/ 根据任务不同，可以定制
+
+2/ 当需要检素时，生成器同时处理多个段落，产生不同的候选集，片段级beam search筛选出最佳序列
+
+3/ 每个细分的分数使用 Crtic 分数进行更新，该分数是每个批评标记类型的归一化概率的加权和。可以在推理过程中调整这些权重以定制模型的行为。与其他需要额外训练才能改变行为的方法不同，Self-RAG 无需额外训练即可适应。
+
 
 # 资料
 
 1. [https://medium.com/@bohachu/self-rag光是用向量資料庫語意檢索不夠精準啦-來點自我批評吧-616e930c9f33](https://medium.com/@bohachu/self-rag%E5%85%89%E6%98%AF%E7%94%A8%E5%90%91%E9%87%8F%E8%B3%87%E6%96%99%E5%BA%AB%E8%AA%9E%E6%84%8F%E6%AA%A2%E7%B4%A2%E4%B8%8D%E5%A4%A0%E7%B2%BE%E6%BA%96%E5%95%A6-%E4%BE%86%E9%BB%9E%E8%87%AA%E6%88%91%E6%89%B9%E8%A9%95%E5%90%A7-616e930c9f33)
 2. [从 RAG 到 Self-RAG —— LLM 的知识增强](https://zhuanlan.zhihu.com/p/661465330)
+3. [Paper Review: Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](https://artgor.medium.com/paper-review-self-rag-learning-to-retrieve-generate-and-critique-through-self-reflection-3ae3ccac3c4e)
+4. [How Self-RAG Could Revolutionize Industrial LLMs](https://towardsdatascience.com/how-self-rag-could-revolutionize-industrial-llms-b33d9f810264)
+5. https://github.com/AkariAsai/self-rag
+6. [https://liuhuanyong.github.io](https://liuhuanyong.github.io/)。
