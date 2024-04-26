@@ -7,6 +7,10 @@
 | Fine-tune RAG embeddings | Fine-tune embedding model on your data                            | LangChain fine-tuning guide             |
 | 2-stage RAG            | First stage keyword search followed by second stage semantic Top K retrieval | Cohere re-rank                          |
 
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/96a401cc-3287-46dd-b91f-5d45c0521b05)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/c740669b-ea7e-44fb-9e38-690e21247ac3)
+
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/df6d48b6-8b7e-4604-8222-c7aaee2b43ee)
 
 # 资料：
 1. https://blog.langchain.dev/semi-structured-multi-modal-rag/
