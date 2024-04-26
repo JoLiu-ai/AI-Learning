@@ -29,7 +29,9 @@ Post Training Dynamic Quantization（PTDQ）
 ```python
 torch.quantization.quantize_dynamic(model, qconfig_spec=None, dtype=torch.qint8, mapping=None, inplace=False)
 ```
-[^参数解释：
+[^]
+
+<!-- 参数解释：
 
 model：模型（默认为FP32）
 
@@ -43,5 +45,61 @@ dtype： float16 或 qint8
 
 mapping：就地执行模型转换，原始模块发生变异
 
-inplace：将子模块的类型映射到需要替换子模块的相应动态量化版本的类型
+inplace：将子模块的类型映射到需要替换子模块的相应动态量化版本的类型 -->
 
+```python
+import torch
+from torch import nn
+
+
+class DemoModel(torch.nn.Module):
+    def __init__(self):
+        super(DemoModel, self).__init__()
+        self.conv = nn.Conv2d(in_channels=1, out_channels=1, kernel_size=1)
+        self.relu = nn.ReLU()
+        self.fc = torch.nn.Linear(2, 2)
+
+    def forward(self, x):
+        x = self.conv(x)
+        x = self.relu(x)
+        x = self.fc(x)
+        return x
+
+
+if __name__ == "__main__":
+    model_fp32 = DemoModel()
+    # 创建一个量化的模型实例
+    model_int8 = torch.quantization.quantize_dynamic(model=model_fp32,  # 原始模型
+                                                     qconfig_spec={torch.nn.Linear},  # 要动态量化的算子
+                                                     dtype=torch.qint8)  # 将权重量化为：qint8
+
+    print(model_fp32)
+    print(model_int8)
+
+    # 运行模型
+    input_fp32 = torch.randn(1, 1, 2, 2)
+    output_fp32 = model_fp32(input_fp32)
+    print(output_fp32)
+
+    output_int8 = model_int8(input_fp32)
+    print(output_int8)
+
+```
+输出结果
+
+```python
+DemoModel(
+  (conv): Conv2d(1, 1, kernel_size=(1, 1), stride=(1, 1))
+  (relu): ReLU()
+  (fc): Linear(in_features=2, out_features=2, bias=True)
+)
+DemoModel(
+  (conv): Conv2d(1, 1, kernel_size=(1, 1), stride=(1, 1))
+  (relu): ReLU()
+  (fc): DynamicQuantizedLinear(in_features=2, out_features=2, dtype=torch.qint8, qscheme=torch.per_tensor_affine)
+)
+tensor([[[[0.3120, 0.3042],
+          [0.3120, 0.3042]]]], grad_fn=<AddBackward0>)
+tensor([[[[0.3120, 0.3042],
+          [0.3120, 0.3042]]]])
+```
