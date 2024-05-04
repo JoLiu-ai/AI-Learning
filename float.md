@@ -15,12 +15,11 @@ V = (-1)^S * M * R^E
 - R（base）：基数，表示十进制数 R 就是 10，表示二进制数 R 就是 2
 - E（exponent/range-**the range  of the number**）：
     - 指数，用整数表示，例如前面看到的 10^-1，-1 即是指数
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/35db3159-a1f7-45d4-af5e-f57a53621eeb/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/6be8af40-4e75-45e5-8677-c05470105ee7)
 
 存储方式：
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/e6c6da04-c569-4e25-91c8-583e206e01cf)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/306f2f1c-49b8-47f0-8a02-d953f480a1a3/Untitled.png)
 
 ### **流程：十进制数小数**转换为**浮点数**
 
@@ -36,12 +35,12 @@ V = (-1)^S * M * R^E
 **补充：**
 
 **整数部分（25）：** 
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/5ec97b16-fdec-4fe4-b640-0dde48059a1d)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/3c46e2c0-61c9-46c9-8685-1db9e870b862/Untitled.png)
 
 **小数部分（**0..8125**）**
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/a2c8ec93-aaa8-455e-a356-95978583a372)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/9eda9bf9-9dd4-4f7d-a17c-c7d74faff8e2/Untitled.png)
 
 ---
 
@@ -62,9 +61,9 @@ IEEE 754 标准定义了浮点数的二进制表示,包括以下三部分
 
 因此, IEEE 754 浮点数的二进制表示可以表示为 (-1)^S * 1.M * 2^(E-bias)。
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/febc6dbf-4d25-40df-b87e-6a7a9edb12b1/Untitled.png)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/2cdaa0e2-4e6e-4bfc-91e0-eb8c007f5682/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/21eb408d-70a6-4b85-ae7c-824fa5947cfc)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/7aee4cb2-7a30-4200-ae62-68612b59e7ca)
 
 ---
 
@@ -90,8 +89,8 @@ IEEE 754 标准定义了浮点数的二进制表示,包括以下三部分
 124 转为二进制就是 1111100。
 
 即：根据IEEE 754，0.15625可表示为：S=0, M=0100, E=124(D)=1111100(B)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/374051f3-22c9-4881-a02c-37081fc75e79)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/62a334c8-9e09-48e6-a631-351a8063da53/Untitled.png)
 
 总结：
 
@@ -190,12 +189,12 @@ $(1+2^{-1}+2^{-2}+…+2^{-23}) * 2^{127} =(2-2^{-23})* 2^{127}$
 - 指数 E 全 1，尾数不全为0：**NaN**(Not a Number) ，如对 -1 进行开根号时
 
 这种表示是具有连续性的。这也就是为什么非规范化浮点数指数规定为比规范形式的偏移值小 1（即单精度为 -126，双精度为 -2046）
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/65cb225e-e9fd-43d8-97a5-91cef244bcbb)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/62557559-2aa1-4ef6-90fc-eef77361b9dc/Untitled.png)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/b3510665-70a9-405f-8a96-d705d6dd7994)
+![image](https://github.com/hinswhale/AI-Learning/assets/22999866/e8076053-f13f-4d28-88df-d08953c012f9)
 
-!https://kaito-blog-1253469779.cos.ap-beijing.myqcloud.com/2020/12/16090749848677.jpg
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/7e6f3c4c-d262-4a72-a9bc-da279ef77783/Untitled.png)
 
 ### 计算工具
 
