@@ -28,14 +28,19 @@ from torch.nn.parallel import DistributedDataParallel
 # 初始化进程组
 dist.init_process_group(backend='nccl', init_method='tcp://127.0.0.1:23456', world_size=ngpus_per_node, rank=gpu)
 
-# 设置分布式采样器
-sampler = DistributedSampler(data, num_replicas=ngpus_per_node, rank=gpu)
 
 # 使用 DistributedDataParallel 封装模型
-model = DistributedDataParallel(model, device_ids=[gpu])
+model = model.to(gpu_id)
+model = DistributedDataParallel(model, device_ids=[gpu_id])
+
+# 设置分布式采样器
+sampler = DistributedSampler(data, num_replicas=ngpus_per_node, rank=gpu)
+# num_replicas：这是要创建的副本数。每个副本将拥有一个子集的数据。rank：这是当前进程的排名。用于确定当前进程应该获取哪个子集的数据。
+sampler.set_epoch(0)
 
 # 销毁进程组
 dist.destroy_process_group()
+
 ```
 ### 使用 torchrun 启动分布式训练
 ```sh
