@@ -4,5 +4,5 @@ m2 = m1.to(device)
 b = a.to(device) # a tensor
 ```
 
-> a 在cpu上，b在gpu上
-> m1 和 m2在gpu上，idential
+>- a 在cpu上，b在gpu上
+>- m1 和 m2在gpu上，idential
