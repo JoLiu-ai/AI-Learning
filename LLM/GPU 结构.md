@@ -5,7 +5,8 @@
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/4d6c59d6-ebbd-4857-9c0c-b0c6311b3576)
 
 > 自制的玩具[🙅不要信它]
-<img width="600" length="800" alt="2" src="https://github.com/hinswhale/AI-Learning/assets/22999866/041c5dc9-690f-4394-b8b2-385e54833e94">
+<img width="600" length="800" alt="0" src="https://github.com/hinswhale/AI-Learning/assets/22999866/e82c4306-3a2c-4110-be21-a187d1c055fc">
+
 
 --
 
