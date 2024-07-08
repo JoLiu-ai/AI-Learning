@@ -70,8 +70,11 @@ attention QKV 计算
 
 ### Recomputation(backward pass)
 
-![image](images/Inference_regular_attn.gif)
-![image](images/inference_splitkv.gif)
+![image](./images/Inference_regular_attn.gif)
+
+![image](./images/inference_splitkv.gif)
+
+![Inference regular attention](./images/Inference_regular_attn.gif)
 
 ## 参考
 1. [Hardware-aware Algorithms for Sequence Modeling - Tri Dao](https://www.youtube.com/watch?v=foG0ebzuw34)
