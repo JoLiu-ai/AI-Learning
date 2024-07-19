@@ -16,6 +16,7 @@
 ![image](https://github.com/user-attachments/assets/6a4fab76-c263-4928-90e8-275d08eeeffd)
 
 
+# ring AllReduce
 ![image](https://github.com/user-attachments/assets/0fd66194-be46-4930-90c2-b692e85f738a)
 
 reduce-scatter (a–d) and all-gather (e–g) in ring AllReduce
