@@ -1,9 +1,9 @@
 ## GPU 结构
-- SM (Streaming Multiproces) : 每个GPU包含多个SM, 每个SM独立执行计算任务
-- L2 Cache
-- HBM（High Bandwidth Memory）- 与memory controller连接, 在GPU外部
+
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/4d6c59d6-ebbd-4857-9c0c-b0c6311b3576)
 
+
+--- 
 
 ### A100 整体结构
 
@@ -34,6 +34,7 @@
     - 提高多GPU系统的带宽，降低延迟。
 
 --- 
+
 
 ### SM (Streaming Multiproces）
 
