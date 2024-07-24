@@ -88,10 +88,11 @@ $\text{Softmax}(x_i) = \frac{e^{x_i - \max(x)}}{\sum_{j} e^{x_j - \max(x)}}$
 - (2) Backward without the large attention matrix from forward.
 
 ### **Softmax normalization in blocks**
+![image](https://github.com/user-attachments/assets/3dbc4f25-3e42-4925-a1b6-5df1bfdba894)
 
-![截屏2024-07-24 20.50.06.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/170c5405-f13e-403f-97ef-09c6d2e93955/%E6%88%AA%E5%B1%8F2024-07-24_20.50.06.png)
 
-![截屏2024-07-24 20.50.19.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/cf1f3a5b-8505-4452-8168-8f40ca94618c/9fecbfef-302c-426c-bc98-d1ab1c6a2edb/%E6%88%AA%E5%B1%8F2024-07-24_20.50.19.png)
+![image](https://github.com/user-attachments/assets/cd1a8f8b-9894-4890-8e1c-8d1e15bd7dbf)
+
 
 > 图片来源：https://www.bilibili.com/video/BV1UT421k7rA/
 
@@ -124,11 +125,10 @@ $\text{Softmax}(x_i) = \frac{e^{x_i - \max(x)}}{\sum_{j} e^{x_j - \max(x)}}$
 
 ### Recomputation(backward pass)【todo】
 
-![./images/Inference_regular_attn.gif](./images/Inference_regular_attn.gif)
+![image](../images/Inference_regular_attn.gif)
 
-![./images/inference_splitkv.gif](./images/inference_splitkv.gif)
+![image](../images/inference_splitkv.gif)
 
-![./images/Inference_regular_attn.gif](./images/Inference_regular_attn.gif)
 
 ### flash & flash2
 
