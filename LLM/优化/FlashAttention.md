@@ -1,8 +1,8 @@
 # 主要思想
-对于Memory-Bound的优化
- - `fusion融合`, 不对中间结果缓存，减少HBM的访问
- -  模型训练时需要保留中间结果，反向传播时使用。
-
+对**Memory-Bound**的优化
+- 目标：减少IO，即尽可能访问GPU内缓存，即**SRAM**
+  - `fusion融合`, 不对中间结果缓存，减少**HBM**的访问
+  -  反向传播时，重新计算中间结果
 
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/fc4177b7-df8e-40d1-921c-a39a73421435)
 
@@ -22,7 +22,9 @@
   - variance：gradient square 的指数平均【Adam】
  
 ## GPU Memory
-- SRAM > HBM > DRAM
+- SRAM[GPU内]  > HBM[GPU外] > DRAM
+  ![image](https://github.com/user-attachments/assets/fb1f825e-939d-446f-aef6-33298b162c74)
+>  **优化目标**： 尽可能访问GPU内缓存，即**SRAM**
 
 - SM（Stream multiproecssors，流多处理器 
   - L1 cache - SRAM
