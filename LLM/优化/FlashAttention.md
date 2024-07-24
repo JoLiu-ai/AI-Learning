@@ -1,6 +1,13 @@
+# 主要思想
+对于Memory-Bound的优化
+ - `fusion融合`, 不对中间结果缓存，减少HBM的访问
+ -  模型训练时需要保留中间结果，反向传播时使用。
+
 
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/fc4177b7-df8e-40d1-921c-a39a73421435)
 
+# 预备知识
+## 大模型参数
 - GPU memory:
   - P: Parameters
   - G: Gradients
@@ -14,7 +21,7 @@
   - momentum：gradient 的指数平均 【Adam】
   - variance：gradient square 的指数平均【Adam】
  
-Memory
+## GPU Memory
 - SRAM > HBM > DRAM
 
 - SM（Stream multiproecssors，流多处理器 
@@ -26,17 +33,17 @@ Memory
  -  108*192/1024 = 20MB
 - HBM：high bandwidth memory（4090 24GB，A100 80GB）
 
-GPU 读写&计算（compute-bound vs. memory-bound)
-- operations fused：将好几个 operations fuse 成一个 operation 进而减轻 memory 存取的 loading
+## compute-bound vs. memory-bound
 - compute-bound ：
   -  多维度的矩阵相乘或是高 channel 数的 convolution
 - memory-bound：
   -  element-wise （e.g.， activation， dropout） & reduction （e.g.， sum， softmax， batch norm， layer norm）
 
+- operations fused：将好几个 operations fuse 成一个 operation 进而减轻 memory 存取的 loading
 attention QKV 计算
 分块矩阵，然后是 loop（outer loop，inner loop，对应的是 gpu cuda 的 kernel 优化）；
 
-### 原始算法
+## 原始算法
 
 ![image](https://github.com/hinswhale/AI-Learning/assets/22999866/6b85c509-7b16-4454-8b86-fd83d8d2c0b6)
 
@@ -76,7 +83,7 @@ attention QKV 计算
 
 ![Inference regular attention](./images/Inference_regular_attn.gif)
 
-## 参考
+# 参考
 1. [Hardware-aware Algorithms for Sequence Modeling - Tri Dao](https://www.youtube.com/watch?v=foG0ebzuw34)
 2. [flash-atttention-2](https://princeton-nlp.github.io/flash-atttention-2/)
 3. [ELI5: FlashAttention](https://gordicaleksa.medium.com/eli5-flash-attention-5c44017022ad)
