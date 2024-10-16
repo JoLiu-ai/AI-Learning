@@ -16,6 +16,8 @@
     > Action: ...   
     > Observation: ...   
     >   ... (Repeated many times)
+    ![image](https://github.com/user-attachments/assets/949e31bd-1f8e-48dc-b37f-31f790ad7992)
+
   - Reflexion ([Shinn & Labash 2023](https://arxiv.org/abs/2303.11366))
     ![image](https://github.com/user-attachments/assets/898448a2-b70e-475c-a4bd-e702a96d89db)
   - Chain of Hindsight (CoH; [Liu et al. 2023](https://arxiv.org/abs/2302.02676))
@@ -31,8 +33,14 @@
 
 
 ## Memory
-		Short-term memory
-		Long-term memory:
+Sensory Memory
+- visual, auditory
+- Short-term memory (STM)
+- Long-term memory
+   - Explicit / declarative memory
+   - Implicit / procedural memory
+  ![image](https://github.com/user-attachments/assets/d5ecef11-6546-4e07-8815-8cd97201aa50)
+
 
 ## Tool use
 ## Action
