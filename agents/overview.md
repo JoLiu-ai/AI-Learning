@@ -17,6 +17,7 @@
     > Observation: ...   
     >   ... (Repeated many times)
     ![image](https://github.com/user-attachments/assets/949e31bd-1f8e-48dc-b37f-31f790ad7992)
+    > 图片来源：动手做AI agent
 
   - Reflexion ([Shinn & Labash 2023](https://arxiv.org/abs/2303.11366))
     ![image](https://github.com/user-attachments/assets/898448a2-b70e-475c-a4bd-e702a96d89db)
