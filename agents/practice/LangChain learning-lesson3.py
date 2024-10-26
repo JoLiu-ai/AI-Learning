@@ -1,5 +1,11 @@
-"""LangChain for LLM Application Development"""
+"""
+from : learn.deeplearning.ai 
+Lession 
+https://learn.deeplearning.ai/courses/langchain/lesson/4/chains
+LangChain for LLM Application Development
 
+fix problem about: Lesson 3: Chains, invalid chain name “biology”
+"""
 
 MULTI_PROMPT_ROUTER_TEMPLATE = """Given a raw text input to a \
 language model select the model prompt best suited for the input. \
@@ -30,3 +36,12 @@ if you don't think any modifications are needed.
 {{input}}
 
 << OUTPUT (remember to include the ```json)>>"""
+chain.run("Why does every cell in our body contain DNA?")
+
+"""
+output:
+> Entering new MultiPromptChain chain...
+None: {'input': 'Why does every cell in our body contain DNA?'}
+> Finished chain.
+'Every cell in our body contains DNA because DNA carries the genetic information that determines the characteristics and functions of an organism. ...
+"""
