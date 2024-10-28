@@ -3,9 +3,7 @@ from langchain.indexes import VectorstoreIndexCreator
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import CSVLoader
-from langchain.vectorstores import DocArrayInMemorySearch
 from IPython.display import display, Markdown
-from langchain.indexes import VectorstoreIndexCreator
 
 query =  "Please list all your shirts with sun protection in a table \
 in markdown and summarize each one."
