@@ -51,8 +51,6 @@ def manual_retrieval_method():
     
     return response
 
-
-
 def retriever_method():
     llm = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
     embeddings = OpenAIEmbeddings()
@@ -126,3 +124,4 @@ def vectorstore_index_method():
 
     """
     return response
+
