@@ -1,8 +1,6 @@
+# 链类型使用建议：
 
-"""
-链类型使用建议：
-
-1. Stuff Chain
+## 1. Stuff Chain
 - 工作方式：
   * 将所有文档合并成一个大文档
   * 一次性发送给 LLM 处理
@@ -18,7 +16,7 @@
   * 需要考虑多个文档间的关系
   * 需要快速响应
 
-2. Map Reduce Chain
+## 2. Map Reduce Chain
 - 工作方式：
   * Map：每个文档单独发送给 LLM 处理
   * Reduce：合并所有中间答案，再次处理得到最终答案
@@ -35,7 +33,7 @@
   * 文档之间相对独立
   * 可以接受并行处理开销
 
-3. Refine Chain
+## 3. Refine Chain
 - 工作方式：
   * 先处理第一个文档得到初始答案
   * 逐个处理后续文档，不断精炼答案
@@ -52,7 +50,7 @@
   * 文档之间有关联
   * 对处理时间不敏感
 
-4. Map Rerank Chain
+## 4. Map Rerank Chain
 - 工作方式：
   * 独立处理每个文档段
   * 对每个答案打分
@@ -76,7 +74,7 @@
 3. 如果需要高质量连贯答案：使用 Refine Chain
 4. 如果需要找到最相关的单个答案：使用 Map Rerank Chain
 
-代码示例：
+## 代码示例：
 ```python
 from langchain.chains.question_answering import load_qa_chain
 from langchain.chains import RetrievalQA
