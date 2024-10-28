@@ -1,4 +1,13 @@
 # 链类型使用建议：
+![image](https://github.com/user-attachments/assets/e3b7e4df-d356-4ed6-bded-7ddef2a6517e)
+
+![image](https://github.com/user-attachments/assets/35596b26-46ae-477c-a3dc-1ae53dda3136)
+
+
+![image](https://github.com/user-attachments/assets/05ef04f9-f29d-46cb-9193-cad2cdcba836)
+
+
+![image](https://github.com/user-attachments/assets/9fc52bbd-1b81-498b-953c-815675563fe4)
 
 ## 1. Stuff Chain
 - 工作方式：
