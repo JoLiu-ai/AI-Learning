@@ -4,6 +4,7 @@ from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import CSVLoader
 from IPython.display import display, Markdown
+from langchain.vectorstores import FAISS
 
 query =  "Please list all your shirts with sun protection in a table \
 in markdown and summarize each one."
@@ -33,6 +34,7 @@ def manual_retrieval_method():
         docs,
         embedding_model
     )
+    # db = FAISS.from_documents(documents, embeddings)
     
     # 4. 相似度搜索
     retrieved_docs = db.similarity_search(query)
@@ -66,6 +68,13 @@ def vectorstore_index_method():
         vectorstore_cls=DocArrayInMemorySearch,
         embedding=embedding_model
     ).from_loaders([loader])
+    """
+    index_creator = VectorstoreIndexCreator(
+    vectorstore_cls=FAISS,
+    embedding=embeddings,
+    text_splitter=CharacterTextSplitter(chunk_size=300, chunk_overlap=0),
+)
+"""
     
     # 3. 直接查询
     response = index.query(query, llm=llm)
