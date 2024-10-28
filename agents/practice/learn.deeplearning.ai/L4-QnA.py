@@ -5,6 +5,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import CSVLoader
 from IPython.display import display, Markdown
 from langchain.vectorstores import FAISS
+from langchain.chains import RetrievalQA
 
 query =  "Please list all your shirts with sun protection in a table \
 in markdown and summarize each one."
@@ -24,7 +25,6 @@ def manual_retrieval_method():
     # 1. 初始化组件
     llm = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
     embedding_model = OpenAIEmbeddings()
-
     
     # 2. 加载文档
     docs = loader.load()
@@ -34,8 +34,11 @@ def manual_retrieval_method():
         docs,
         embedding_model
     )
-    # db = FAISS.from_documents(documents, embeddings)
-    
+    # vectorstore.save_local("faiss_index")
+
+    # # 加载索引
+    # vectorstore = FAISS.load_local("faiss_index", embedding_model)
+        
     # 4. 相似度搜索
     retrieved_docs = db.similarity_search(query)
     
@@ -46,6 +49,26 @@ def manual_retrieval_method():
     full_query = f"{combined_docs} Question: {query}"
     response = llm.call_as_llm(full_query)
     
+    return response
+
+
+
+def retriever_method():
+    llm = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
+    embeddings = OpenAIEmbeddings()
+    docs = loader.load()
+    db = DocArrayInMemorySearch.from_documents(
+        docs, 
+        embeddings
+    )   
+    retriever = db.as_retriever()
+    qa_stuff = RetrievalQA.from_chain_type(
+        llm=llm, 
+        chain_type="stuff", 
+        retriever=retriever, 
+        verbose=True
+    )
+    response = qa_stuff.run(query)
     return response
 
 # 方法2：使用VectorstoreIndexCreator高级API
@@ -68,16 +91,38 @@ def vectorstore_index_method():
         vectorstore_cls=DocArrayInMemorySearch,
         embedding=embedding_model
     ).from_loaders([loader])
-    """
-    index_creator = VectorstoreIndexCreator(
-    vectorstore_cls=FAISS,
-    embedding=embeddings,
-    text_splitter=CharacterTextSplitter(chunk_size=300, chunk_overlap=0),
-)
-"""
-    
-    # 3. 直接查询
     response = index.query(query, llm=llm)
     
-    return response
+    # 3. 直接查询
 
+    """
+    # 添加不同的链类型
+    # 方法 1：通过修改查询时的chain_type
+    # 用VectorstoreIndexCreator
+    # 获取 retriever
+    retriever = index.vectorstore.as_retriever()
+
+    # 创建不同类型的 QA chain
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff", # map_reduce / refine
+        retriever=retriever,
+        verbose=True
+    )
+    stuff_response = qa.run(query)
+    docs = index.vectorstore.similarity_search(query)
+
+     # 方法 2：使用 load_qa_chain
+    from langchain.chains.question_answering import load_qa_chain
+    response = index.query(query, llm=llm)
+
+    # 创建不同类型的链
+    chain_ = load_qa_chain(llm, chain_type="stuff") # map_reduce / refine
+
+    # 获取相关文档  
+    docs = index.vectorstore.similarity_search(query)
+    # 运行不同的链
+    response = chain_.run(input_documents=docs, question=query)
+
+    """
+    return response
