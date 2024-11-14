@@ -1,6 +1,15 @@
 # LLM Fine-Tuning
 ## 1.Supervised Fine-Tuning (SFT)
+
+ 
 ## 2.Reinforcement Learning from Human Feedback (RLHF)
+- 3 models
+ - Initial Language Model
+ - Tuned Language Model (RL Policy)
+ - Reward (Preference) Model
+
+- 2 loss items
+
 ## 3.Parameter Efficient Fine-Tuning (PEFT)
  - BitFit, TinyTL, Adapter, Prompt-Tuning, Prefix-Tuning
  - LoRA, QLoRA, BitDelta
