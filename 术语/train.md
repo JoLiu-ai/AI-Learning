@@ -46,4 +46,6 @@ weights & gradients & optim states
 WHEN N=64:
 ```80GB/0.25Bytes=320B```
 
+## 参考资料/来源
+1/ https://www.youtube.com/watch?v=tiAZUme2ST0
 
