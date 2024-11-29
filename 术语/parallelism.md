@@ -1,5 +1,5 @@
 
-# data parallelism
+# Data Parallelism
 ## communication primitives
 
 ## ZeRO-1/2/3 and FSDP
@@ -49,13 +49,22 @@ weights & gradients & optim states
 WHEN N=64:
 ```80GB/0.25Bytes=320B```
 
-## pipeline parallelism
+## Pipeline Parallelism
 ```split data``` & ```share model```
 ![image](https://github.com/user-attachments/assets/c606eb40-48ca-48bf-8381-a728fb0960c0)
 
 
-## tensor parallelism,
+## Tensor/Model Parallelism
+
+
+## Conclusion
+<img width="1254" alt="截屏2024-11-29 22 03 06" src="https://github.com/user-attachments/assets/8fcfa1a2-2f2b-448b-a783-16f579814a2a">
+
+
+
+
+# Hybrid Parallelism
 
 ## 参考资料/来源
-1/ https://www.youtube.com/watch?v=tiAZUme2ST0
+1/  [TinyML and Efficient Deep Learning Computing - Lec20-Distributed-Training-/I&II](https://www.youtube.com/watch?v=tiAZUme2ST0)
 
