@@ -1,10 +1,11 @@
+
+# 概述
 - 自动化评估：
    使用工具和指标自动衡量 RAG 性能。可以通过准备测试数据集，利用相关工具平台如 LangSmith、Langfuse 等进行评估，也可使用 Trulens、RAGAS 等框架来实现自动化评估
 
 ![image](https://github.com/user-attachments/assets/c7f498f8-2f03-4c97-8ef1-fc4b3a5cd65e)
 
-
-
+# 指标
 ### Groundedness（事实准确性）
 - 评估 LLM 的回答是否基于源文档
 - 方法：
@@ -41,6 +42,48 @@
 ![image](https://github.com/user-attachments/assets/718baf1c-730c-4c95-9ebc-c3a3787c6582)
 
 - 如果相关的召回内容很少，但这些少量的内容都排在很高的位置，那么上下文精度的得分也会很高，这就可能导致评估结果不能真实反映检索系统的整体性能，存在一定的片面性。
+
+# code
+```python
+import os
+os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_KEY"
+dir_path = "YOUR_DIR_PATH"
+
+from llama_index import VectorStoreIndex, SimpleDirectoryReader
+
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_relevancy,
+    context_recall,
+    context_precision
+)
+
+from ragas.llama_index import evaluate
+
+documents = SimpleDirectoryReader(dir_path).load_data()
+index = VectorStoreIndex.from_documents(documents)
+query_engine = index.as_query_engine()
+
+eval_questions = [
+]
+eval_answers = [
+]
+eval_answers = [[a] for a in eval_answers]
+
+
+metrics = [
+    faithfulness,
+    answer_relevancy,
+    context_relevancy,
+    context_precision,
+    context_recall,
+]
+result = evaluate(query_engine, metrics, eval_questions, eval_answers)
+result.to_pandas().to_csv('YOUR_CSV_PATH', sep=',')
+
+
+```
 
 # 参考文献
 1. 英文原文：https://ai.plainenglish.io/advanced-rag-03-using-ragas-llamaindex-for-rag-evaluation-84756b82dca7
