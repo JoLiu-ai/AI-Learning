@@ -47,6 +47,20 @@ the probability of taking action a given state s
  $$A(s,a)=Q(s,a)−V(s)$$ 
 选取某个动作后得到的动作价值相对于平均动作价值的增量，当优势函数大于0时，说明当前的动作选择是优于平均的
 
+# 2. 相关模型
+- Actor Model：需要训练的目标语言模型,负责根据当前环境状态（State）选择动作（Action）
+ - 用SFT阶段产出的SFT模型来对它做初始化,让Actor模型能产生符合人类喜好的response
+- Critic Model：预估总收益
+ -  提升模型对人类喜好量化判断的能力
+ -  预测给定状态下动作的预期累积奖励（Value Function），用于指导Actor的策略优化
+- Reward Model：奖励模型，计算即时收益
+ - 计算生成token的即时收益
+- Reference Model：参考模型
+  - 用SFT阶段得到的SFT模型做初始化，在训练过程中，它的参数是冻结的
+> Actor/Critic Model需要训练；Reward/Reference Model参数冻结
+> 示例场景
+> 在PPO算法中，Actor生成文本响应，并通过Critic的反馈调整策略。例如，当用户提问“如何评价这部电影？”时，Actor生成两种可能的回复：“非常精彩”或“剧情拖沓”，Critic评估哪种回复更可能获得高奖励。
+
 # 其他概念【todo】
 马尔可夫决策过程（Markov decision process， MDP）
 
