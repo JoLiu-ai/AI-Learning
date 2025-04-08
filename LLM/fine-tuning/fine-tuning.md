@@ -194,9 +194,10 @@ prefix_values = nn.Parameter(torch.randn(num_layers, num_heads, prefix_length, h
 插入少量可训练的小型神经网络模块
 
 ### LoRA (Low-Rank Adaptation)
-- 在原始模型参数旁边添加低秩矩阵
-- 仅训练这些低秩矩阵
-- 参数量极少，计算开销小
+在原始模型参数W添加低秩矩阵  $$\Delta W$$ ,仅训练与任务相关的  $$\Delta W$$
+- 参数量极少，计算开销小  
+- 存储文件小  
+- 模块化：训练好的 ( A ) 和 ( B ) 可以轻松加载或卸载，适合多任务场景，且不会改变原始模型权重。可逆性：可以轻松切换回原始模型；跟据不同任务，训练A，B  
 
 **公式**：
 
@@ -271,7 +272,32 @@ class LoRALinear(nn.Module):
         
         return base_output + lora_output
 ```
-变形：
+
+#### 计算复杂度分析
+
+**时间复杂度**
+1. 全参数微调:
+  - 前向传播: O(batch_size × seq_len × d_model²)  
+  - 反向传播: O(batch_size × seq_len × d_model²)  
+  - 参数更新: O(模型参数数量) = O(d_model²)  
+2. LoRA微调:
+  - 前向传播: O(batch_size × seq_len × d_model² + batch_size × seq_len × r × d_model)  
+  - 反向传播: O(batch_size × seq_len × d_model² + batch_size × seq_len × r × d_model)（d_model²项来自输入梯度计算，非参数梯度） 
+  - 参数更新: O(LoRA参数数量) = O(r × d_model) 
+**空间复杂度**
+1. 全参数微调:
+  - 模型参数: O(d_model²)
+  - 优化器状态: O(d_model²)
+  - 激活值: O(batch_size × seq_len × d_model) 
+  - 总空间复杂度: O(d_model² + batch_size × seq_len × d_model) 
+2. LoRA微调:
+  - 模型参数: O(d_model² + r × d_model) 
+  - 优化器状态: O(r × d_model) 
+  - 激活值: O(batch_size × seq_len × d_model) 
+  - 总空间复杂度: O(d_model² + r × d_model + batch_size × seq_len × d_model) 
+
+
+#### 变形：
 LoRA VS AdaLoRA vs QLoRA
 
 | 特征     | LoRA | AdaLoRA | QLoRA |
