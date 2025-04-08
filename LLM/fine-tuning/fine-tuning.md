@@ -231,13 +231,17 @@ peft_config = LoraConfig(
     inference_mode=False, 
     r=8, 
     lora_alpha=32, 
-    lora_dropout=0.1
+    lora_dropout=0.1,
+    target_modules=["q_proj", "v_proj"]
 )
+model = get_peft_model(model, config)
+
 ```
-> - task_type：指定任务类型。如： Causal Language Modeling（因果语言建模）, SEQ2SEQ_LM（序列到序列语言模型，如 T5）、TOKEN_CLASSIFICATION（标注任务)等。  
+> - task_type：指定任务类型。如： Causal Language Modeling（因果语言建模）, SEQ2SEQ_LM（序列到序列语言模型，如 T5）、TOKEN_CLASSIFICATION（标注任务)等。
+> - 矩阵A用高斯分布初始化，矩阵B初始化为零。
 > - inference_mode：是否在推理模式下使用Peft模型。  
-> - r： 低秩分解中矩阵𝐴和𝐵的秩,常用值：4、8、16,越大性能越好，但参数量增加
-> - lora_alpha:LoRA 的缩放因子，用于调节 LoRA 权重的影响力,典型范围：1-32.在应用 𝐴 和 𝐵 时，权重调整为：Δ𝑊=𝛼/𝑟⋅(𝐴⋅𝐵),其中 𝛼=lora_alpha,这可以放大或缩小 LoRA 的调整幅度
+> - r： 低秩分解中矩阵𝐴和𝐵的秩,常用值：4、8、16, 控制容量，调大则增加表达力，性能越好，但参数量增加。
+> - lora_alpha:LoRA 的缩放因子，用于调节 LoRA 权重的影响力,典型范围：1-32，通常设为2r.在应用 𝐴 和 𝐵 时，权重调整为：Δ𝑊=𝛼/𝑟⋅(𝐴⋅𝐵),其中 𝛼=lora_alpha,这可以放大或缩小 LoRA 的调整幅度。
 > - lora_dropout：LoRA 层的丢弃（dropout）率，取值范围为[0, 1)。  
 > - target_modules：要替换为 LoRA 的模块名称列表或模块名称的正则表达式。针对不同类型的模型，模块名称不一样，因此，我们需要根据具体的模型进行设置，比如，LLaMa的默认模块名为[q_proj, v_proj]，我们也可以自行指定为：[q_proj,k_proj,v_proj,o_proj]。 在 PEFT 中支持的模型默认的模块名如下所示：
 
