@@ -300,9 +300,11 @@ class LoRALinear(nn.Module):
 
 #### 在模型的哪些模块上应用LoRA 适配器
 应用于所有线性层(q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj)
-- q_proj, k_proj, v_proj: 自注意力机制中的查询（Query）、键（Key）、值（Value）投影。
-- o_proj: 自注意力输出的投影。
-- gate_proj, up_proj, down_proj: 前馈网络（FFN）中的门控、升维和降维投影。
+- Self-attention层
+    - q_proj, k_proj, v_proj: 自注意力机制中的查询（Query）、键（Key）、值（Value）投影。
+    - o_proj: 自注意力输出的投影。
+- MLP层
+    - gate_proj, up_proj, down_proj: 前馈网络（FFN）中的门控、升维和降维投影。
 
 
 #### 变形：
