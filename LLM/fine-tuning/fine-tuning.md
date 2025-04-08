@@ -218,7 +218,7 @@ $$
 $𝐴 \in \mathbb{R}^{r \times d}$, $B \in \mathbb{R}^{r \times d}$是低秩矩阵,r 是秩（rank），通常设置为较小的值。
 训练时，仅优化𝐴和 𝐵，而不更新 𝑊
 
-> - Transformer的权重矩阵包括Attention模块里用于计算query, key, value的 $$W_q$$ ，$$W_k$$ ，$$W_v$$ 以及多头attention的 $$W_o$$ ,以及MLP层的权重矩阵
+> - Transformer的权重矩阵包括Attention模块里用于计算query, key, value的 $$W_q$$ ， $$W_k$$ ， $$W_v$$ 以及多头attention的 $$W_o$$ ,以及MLP层的权重矩阵
 > - LoRA只应用于Attention模块中的4种权重矩阵，而且通过消融实验发现同时调整 $$W_q$$ 和 $$W_v$$会产生最佳结果。默认的模块名基本都为 $$W_q$$ 和 $$W_v$$ 权重矩阵。
 
 
