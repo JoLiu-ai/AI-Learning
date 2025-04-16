@@ -49,7 +49,7 @@
 
 ---
 
-### 🎓 AI 教育者 & 内容创作者
+### 🎓 AI 教育者
 
 | 姓名 | 简介 | 推荐资源 | 备注 |
 |------|------|-----------|------|
@@ -79,6 +79,18 @@
 |The AI Daily Brief | 每日 AI 新闻简报 | 播客链接 | 快速获取 AI 动态 |
 |Y Combinator | 创业孵化器的官方播客，涵盖 AI 创业话题 | 播客链接 | 创业与技术结合 |
 |Sequoia Capital | 红杉资本的官方播客，讨论 AI 投资与趋势 | 播客链接 | 投资视角 |
-|The AI Podcast | Nvidia 推出的 AI 主题播客 | 播客链接 | 宝藏播客
+|The AI Podcast | Nvidia 推出的 AI 主题播客 | 播客链接 | 宝藏播客｜
+
+
+---
+
+###  内容创作者
+| 姓名     | 简介 | 推荐资源                                      | 备注   |
+|----------|------|----------------------------------------------|--------|
+| 月球大叔 |      | [Bilibili](https://www.bilibili.com/video/BV1edfwYJE39/) | vllm   |
+| RethinkFun |      | [Bilibili](https://space.bilibili.com/18235884/) |        |
+| ZOMI酱   |      | [Bilibili](https://space.bilibili.com/517221395) |        |
+| 五道口纳什 |      |                                              |        |
+
 
 
