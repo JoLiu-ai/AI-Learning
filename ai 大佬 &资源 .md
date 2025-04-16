@@ -68,7 +68,7 @@
 | **苏剑林** | 科学空间博主，中文 AI 知识传播者 | [kexue.fm](http://kexue.fm) | 中文社区活跃者 |
 
 ---
-###🎙️ AI 播客与内容平台
+### 🎙️ AI 播客与内容平台
 | 名称 | 简介 | 推荐资源 | 备注 |
 |------|------|-----------|------|
 |Latent Space | 深度探讨 AI 技术与趋势的播客 | [YouTube 频道](https://www.youtube.com/@LatentSpacePod) | 技术深度剖析 |
