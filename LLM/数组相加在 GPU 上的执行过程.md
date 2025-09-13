@@ -148,4 +148,12 @@ Kernel (核函数：工艺说明书)
          ├── Thread 0-31  → Warp 0
          └── Thread 32-63 → Warp 1
 ```
+- kernel：算法逻辑的蓝本，每个 thread 都执行同样的代码。
 
+- grid：一次 kernel 启动对应的总任务。
+
+- block：grid 的分区，每个 block 包含多个 thread。
+
+- thread：最小执行单元，每个 thread 拿到自己的 ID 去处理不同的数据。
+
+- warp：硬件自动把 32 个连续 thread 组合成一个执行小队，必须锁步执行。
