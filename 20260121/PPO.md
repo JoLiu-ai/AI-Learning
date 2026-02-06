@@ -1,6 +1,26 @@
 
 
 ```
+"PPO分三阶段:
+
+1️⃣ 生成阶段: Actor采样生成responses
+
+2️⃣ 评价阶段(关键):
+   - RM打分得到r(s,a)
+   - Ref Policy算KL散度 → r' = r - β·KL
+   - Critic估计V(s)
+   - 用GAE结合r'和V算出Advantage
+
+3️⃣ 更新阶段:
+   - Actor最大化: E[min(ratio·A, clip(ratio)·A)]
+   - Critic最小化: (V - r')²
+   
+关键点:
+Actor loss：实际上 KL 通过 r' 改变 Advantage → 影响 Actor loss 
+Critic loss：严格来说 Critic 最小化的是 (V - target_value)^2，target_value = r' + γV_next
+所以 Critic 的 loss 也是间接受 KL 影响 
+
+
                     ┌─────────────────────┐
                     │   PPO训练主循环      │
                     └──────────┬──────────┘
