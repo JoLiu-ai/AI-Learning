@@ -194,9 +194,10 @@ prefix_values = nn.Parameter(torch.randn(num_layers, num_heads, prefix_length, h
 插入少量可训练的小型神经网络模块
 
 ### LoRA (Low-Rank Adaptation)
-- 在原始模型参数旁边添加低秩矩阵
-- 仅训练这些低秩矩阵
-- 参数量极少，计算开销小
+在原始模型参数W添加低秩矩阵  $$\Delta W$$ ,仅训练与任务相关的  $$\Delta W$$
+- 参数量极少，计算开销小  
+- 存储文件小  
+- 模块化：训练好的 ( A ) 和 ( B ) 可以轻松加载或卸载，适合多任务场景，且不会改变原始模型权重。可逆性：可以轻松切换回原始模型；跟据不同任务，训练A，B  
 
 **公式**：
 
@@ -218,8 +219,8 @@ $$
 $𝐴 \in \mathbb{R}^{r \times d}$, $B \in \mathbb{R}^{r \times d}$是低秩矩阵,r 是秩（rank），通常设置为较小的值。
 训练时，仅优化𝐴和 𝐵，而不更新 𝑊
 
->Transformer的权重矩阵包括Attention模块里用于计算query, key, value的**Wq**，**Wk**，**Wv**以及多头attention的**Wo**,以及MLP层的权重矩阵
->LoRA只应用于Attention模块中的4种权重矩阵，而且通过消融实验发现同时调整 **Wq** 和 **Wv** 会产生最佳结果。默认的模块名基本都为 Wq 和 Wv 权重矩阵。
+> - Transformer的权重矩阵包括Attention模块里用于计算query, key, value的 $$W_q$$ ， $$W_k$$ ， $$W_v$$ 以及多头attention的 $$W_o$$ ,以及MLP层的权重矩阵
+> - LoRA只应用于Attention模块中的4种权重矩阵，而且通过消融实验发现同时调整 $$W_q$$ 和 $$W_v$$会产生最佳结果。默认的模块名基本都为 $$W_q$$ 和 $$W_v$$ 权重矩阵。
 
 
 ![image](https://github.com/user-attachments/assets/4bdfcf8c-c1c8-4e75-8a8c-0858d91f15ab)
@@ -231,15 +232,21 @@ peft_config = LoraConfig(
     inference_mode=False, 
     r=8, 
     lora_alpha=32, 
-    lora_dropout=0.1
+    lora_dropout=0.1,
+    target_modules=["q_proj", "v_proj"]
 )
+model = get_peft_model(model, config)
+
 ```
->task_type：指定任务类型。如： Causal Language Modeling（因果语言建模）, SEQ2SEQ_LM（序列到序列语言模型，如 T5）、TOKEN_CLASSIFICATION（标注任务)等。  
->inference_mode：是否在推理模式下使用Peft模型。  
->r： 低秩分解中矩阵𝐴和𝐵的秩,常用值：4、8、16,越大性能越好，但参数量增加
->lora_alpha:LoRA 的缩放因子，用于调节 LoRA 权重的影响力,典型范围：1-32.在应用 𝐴 和 𝐵 时，权重调整为：Δ𝑊=𝛼/𝑟⋅(𝐴⋅𝐵),其中 𝛼=lora_alpha,这可以放大或缩小 LoRA 的调整幅度
->lora_dropout：LoRA 层的丢弃（dropout）率，取值范围为[0, 1)。  
->target_modules：要替换为 LoRA 的模块名称列表或模块名称的正则表达式。针对不同类型的模型，模块名称不一样，因此，我们需要根据具体的模型进行设置，比如，LLaMa的默认模块名为[q_proj, v_proj]，我们也可以自行指定为：[q_proj,k_proj,v_proj,o_proj]。 在 PEFT 中支持的模型默认的模块名如下所示：
+> - task_type：指定任务类型。如： Causal Language Modeling（因果语言建模）, SEQ2SEQ_LM（序列到序列语言模型，如 T5）、TOKEN_CLASSIFICATION（标注任务)等。
+> - 矩阵A用高斯分布初始化，矩阵B初始化为零。
+> - inference_mode：是否在推理模式下使用Peft模型。  
+> - r： 低秩分解中矩阵𝐴和𝐵的秩,常用值：4、8、16, 控制容量，调大则增加表达力，性能越好，但参数量增加。
+> - lora_alpha:LoRA 的缩放因子，用于调节 LoRA 权重的影响力,典型范围：1-32，通常设为2r.在应用 𝐴 和 𝐵 时，权重调整为：Δ𝑊=𝛼/𝑟⋅(𝐴⋅𝐵),其中 𝛼=lora_alpha,这可以放大或缩小 LoRA 的调整幅度。
+> - lora_dropout：LoRA 层的丢弃（dropout）率，取值范围为[0, 1)。  
+> - target_modules：要替换为 LoRA 的模块名称列表或模块名称的正则表达式。针对不同类型的模型，模块名称不一样，因此，我们需要根据具体的模型进行设置，比如，LLaMa的默认模块名为[q_proj, v_proj]，我们也可以自行指定为：[q_proj,k_proj,v_proj,o_proj]。
+
+
 
 源码
 ```python
@@ -267,7 +274,40 @@ class LoRALinear(nn.Module):
         
         return base_output + lora_output
 ```
-变形：
+
+#### 计算复杂度分析
+
+**时间复杂度**
+1. 全参数微调:
+  - 前向传播: O(batch_size × seq_len × d_model²)  
+  - 反向传播: O(batch_size × seq_len × d_model²)  
+  - 参数更新: O(模型参数数量) = O(d_model²)  
+2. LoRA微调:
+  - 前向传播: O(batch_size × seq_len × d_model² + batch_size × seq_len × r × d_model)  
+  - 反向传播: O(batch_size × seq_len × d_model² + batch_size × seq_len × r × d_model)（d_model²项来自输入梯度计算，非参数梯度） 
+  - 参数更新: O(LoRA参数数量) = O(r × d_model) 
+**空间复杂度**
+1. 全参数微调:
+  - 模型参数: O(d_model²)
+  - 优化器状态: O(d_model²)
+  - 激活值: O(batch_size × seq_len × d_model) 
+  - 总空间复杂度: O(d_model² + batch_size × seq_len × d_model) 
+2. LoRA微调:
+  - 模型参数: O(d_model² + r × d_model) 
+  - 优化器状态: O(r × d_model) 
+  - 激活值: O(batch_size × seq_len × d_model) 
+  - 总空间复杂度: O(d_model² + r × d_model + batch_size × seq_len × d_model) 
+
+#### 在模型的哪些模块上应用LoRA 适配器
+应用于所有线性层(q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj)
+- Self-attention层
+    - q_proj, k_proj, v_proj: 自注意力机制中的查询（Query）、键（Key）、值（Value）投影。
+    - o_proj: 自注意力输出的投影。
+- MLP层
+    - gate_proj, up_proj, down_proj: 前馈网络（FFN）中的门控、升维和降维投影。
+
+
+#### 变形：
 LoRA VS AdaLoRA vs QLoRA
 
 | 特征     | LoRA | AdaLoRA | QLoRA |
